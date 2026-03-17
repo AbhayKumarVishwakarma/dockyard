@@ -7,3 +7,5 @@ ADD . .
 ENTRYPOINT ["python"]
 
 CMD ["app.py"]
+
+# CMD ["python", "app.py"]
