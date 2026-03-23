@@ -9,3 +9,4 @@ venv
 .docker-ignore
 docker-compose.override.yml
 test.txt
+abraj-learning.pem

@@ -1,6 +1,5 @@
-from flask import Flask, jsonify
-from flask import request
-from flask import request
+from flask import Flask, jsonify, render_template, request
+
 
 app = Flask(__name__)
 
@@ -8,8 +7,8 @@ items = []
 
 @app.route('/', methods=['GET'])
 def get_data():
-    data = {"message": "Welcome to AWS!"}
-    return jsonify(data)
+    return render_template('index.html')
+
 
 @app.route('/items', methods=['GET'])
 def get_items():
