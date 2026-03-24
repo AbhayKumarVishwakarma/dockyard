@@ -1,10 +1,10 @@
 import psycopg2
 
 conn = psycopg2.connect(
-    host="dockyard.cbc80cesu2t3.ap-south-1.rds.amazonaws.com",
+    host="test.amazonaws.com",
     database="postgres",
     user="postgres",
-    password="12345678",
+    password="password",
     port=5432
 )
 
