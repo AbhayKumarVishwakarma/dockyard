@@ -10,26 +10,26 @@ conn = psycopg2.connect(
 
 cur = conn.cursor()
 
-# # Create a table
-# cur.execute('''
-#     CREATE TABLE IF NOT EXISTS users (
-#         id SERIAL PRIMARY KEY,
-#         name VARCHAR(100),
-#         email VARCHAR(100) UNIQUE
-#     )
-# ''')
-# print("Table created successfully.")
+# Create a table
+cur.execute('''
+    CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(100),
+        email VARCHAR(100) UNIQUE
+    )
+''')
+print("Table created successfully.")
 
 
-# # Insert a record
-# cur.execute(
-#     "INSERT INTO users (name, email) VALUES (%s, %s)",
-#     ("John Doe", "john.doe@example.com"),
-#     # ("Jane Smith", "jane.smith@example.com")
-# )
-# print("Records inserted successfully.")
+# Insert a record
+cur.execute(
+    "INSERT INTO users (name, email) VALUES (%s, %s)",
+    ("John Doe", "john.doe@example.com"),
+    # ("Jane Smith", "jane.smith@example.com")
+)
+print("Records inserted successfully.")
 
-# conn.commit()
+conn.commit()
 
 
 # Query the table
