@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-k8s
+  labels:
+    app: basic-k8s-deployment
+spec:
+  selector:
+    matchLabels:
+      app: basic-k8s
+  template:
+    metadata:
+      labels:
+        app: basic-k8s
+    replicas: 3
+    spec:
+      containers:
+      - name: basic-k8s-main
+        image: docker.io/abraj3492/basic-k8s:latest
+        ports:
+        - containerPort: 5000
