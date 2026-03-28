@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro-frontend
+spec:
+  selector:
+    matchLabels:
+      app: micro-frontend
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: micro-frontend
+    spec:
+      containers:
+      - name: micro-frontend
+        image: docker.io/abhay3492/micro-frontend
+        ports:
+        - containerPort: 9000
+        env:
+        - name: BACKEND_URL
+          value: http://micro-backend.default.svc.cluster.local
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: micro-frontend
+spec:
+  selector:
+    app: micro-frontend
+  ports:
+  - port: 80
+    targetPort: 9000
+  type: ClusterIP

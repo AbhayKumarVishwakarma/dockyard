@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro-backend
+spec:
+  selector:
+    matchLabels:
+      app: micro-backend
+  template:
+    metadata:
+      labels:
+        app: micro-backend
+    spec:
+      containers:
+      - name: micro-backend
+        image: docker.io/abhay3492/micro-backend
+        ports:
+        - containerPort: 8000
+        env:
+        - name: MONGO_HOST
+          value: mongo.default.svc.cluster.local
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: micro-backend
+spec:
+  selector:
+    app: micro-backend
+  ports:
+  - port: 80
+    targetPort: 8000
+  type: NodePort
